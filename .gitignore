@@ -1,0 +1,15 @@
+# Node
+node_modules/
+
+# React
+dist/
+
+# .NET
+bin/
+obj/
+
+# VS
+.vs/
+
+# Environment
+.env
