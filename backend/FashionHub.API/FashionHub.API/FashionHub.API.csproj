@@ -19,8 +19,8 @@
 
   <ItemGroup>
     <Folder Include="Helpers\" />
+    <Folder Include="Images\Products\" />
     <Folder Include="Middleware\" />
-    <Folder Include="Images\" />
     <Folder Include="Services\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
