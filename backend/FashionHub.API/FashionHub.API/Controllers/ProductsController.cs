@@ -127,6 +127,8 @@ namespace FashionHub.API.Controllers
 
                 string filePath = Path.Combine(folderPath, fileName);
 
+
+
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await dto.Image.CopyToAsync(stream);
