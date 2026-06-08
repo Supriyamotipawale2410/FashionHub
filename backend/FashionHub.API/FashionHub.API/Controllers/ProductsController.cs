@@ -160,6 +160,43 @@ namespace FashionHub.API.Controllers
         }
 
 
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchProducts(string keyword)
+        {
+            var products = await _context.Products
+                .Include(p => p.Category)
+                .Where(p => p.Name.Contains(keyword))
+                .ToListAsync();
+
+            return Ok(products);
+        }
+
+        [HttpGet("category/{categoryId}")]
+        public async Task<IActionResult> GetProductsByCategory(int categoryId)
+        {
+            var products = await _context.Products
+                .Include(p => p.Category)
+                .Where(p => p.CategoryId == categoryId)
+                .ToListAsync();
+
+            return Ok(products);
+        }
+
+        [HttpGet("sort")]
+        public async Task<IActionResult> SortProducts(string order = "asc")
+        {
+            var products = order.ToLower() == "desc"
+                ? await _context.Products
+                    .OrderByDescending(p => p.Price)
+                    .ToListAsync()
+                : await _context.Products
+                    .OrderBy(p => p.Price)
+                    .ToListAsync();
+
+            return Ok(products);
+        }
+
+
     }
 
 
